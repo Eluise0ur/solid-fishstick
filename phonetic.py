@@ -11,4 +11,4 @@ def read( word ):
         chinese = data.find_all('li')[2].text
         return( english + chinese[5:])
     except:
-        return( '查無此字' )
+        return( '無法翻譯此單字，請重新輸入' )
