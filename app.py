@@ -70,8 +70,8 @@ def callback():
         line_bot_api.reply_message(
             event.reply_token,
             ImageSendMessage(
-                original_content_url = image,
-                preview_image_url = image)
+                    original_content_url = image,
+                    preview_image_url = image)
         )
 
         result = pn.read(event.message.text)
