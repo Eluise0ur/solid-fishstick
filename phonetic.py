@@ -9,6 +9,6 @@ def read( word ):
     try:
         english = data.find_all('span')[0].text
         chinese = data.find_all('li')[2].text
-        return( english + chinese[5:])
+        return( english + " " + chinese)
     except:
         return( '無法翻譯此單字，請重新輸入' )
