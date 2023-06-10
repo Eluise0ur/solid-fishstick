@@ -65,6 +65,14 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
+           
+        image =  "https://yt3.googleusercontent.com/ytc/AGIKgqPRYV-Bg1-4gAtqVwo6tWtgPkTMtLm-STXRb31Rqg=s176-c-k-c0x00ffffff-no-rj"
+        line_bot_api.reply_message(
+            event.reply_token,
+            ImageSendMessage(
+                original_content_url = image,
+                preview_image_url = image)
+        )
 
         result = pn.read(event.message.text)
         line_bot_api.reply_message(
