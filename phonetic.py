@@ -1,18 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 def read( word ):
-    url = f'https://dict.revised.moe.edu.tw/search.jsp?md=1&word={word}#searchL'
-
+    url = f'https://tw.dictionary.search.yahoo.com/search;_ylt=Awrt4EJEZYRkEbkQsgp7rolQ;_ylc=X1MDMTM1MTIwMDM3OQRfcgMyBGZyAwRmcjIDc2ItdG9wLXNlYXJjaARncHJpZANwMXdsM25pWFREeURjZDEuX0pMRFNBBG5fcnNsdAMwBG5fc3VnZwM2BG9yaWdpbgN0dy5kaWN0aW9uYXJ5LnNlYXJjaC55YWhvby5jb20EcG9zAzAEcHFzdHIDBHBxc3RybAMwBHFzdHJsAzMEcXVlcnkDY2F0BHRfc3RtcAMxNjg2Mzk4Mjg0?p={word}&fr=sfp&iscqry=&fr2=sb-top-search'  
     html = requests.get( url )
     bs = BeautifulSoup(html.text,'lxml')
-    data = bs.find('table', id='searchL')
+    data = bs.find('div', {'class':'grp grp-main pl-25'} )
+
     try:
-        row = data.find_all('tr')[2]
-        chinese = row.find('cr').text
-        phones = row.find_all('code')
-        phone = [e.text for e in phones]
-        s = " ".join( phone )
-        # s = row.find('sub')
-        return( chinese + s )
+        english = data.find_all('span')[0].text
+        chinese = data.find_all('li')[2].text
+        return( english + chinese )
     except:
         return( '查無此字' )
