@@ -65,7 +65,7 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
-           
+        """ 
         image =  "https://a001.wzu.edu.tw/datas/upload/Pictures/wzlogo_2020.png"
         line_bot_api.reply_message(
             event.reply_token,
@@ -73,6 +73,7 @@ def callback():
                     original_content_url = image,
                     preview_image_url = image)
         )
+        """
 
         
         result = pn.read(event.message.text)
