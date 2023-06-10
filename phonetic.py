@@ -9,6 +9,6 @@ def read( word ):
     try:
         english = data.find_all('span')[0].text
         chinese = data.find_all('li')[2].text
-        return( english + chinese[6:])
+        return( english + chinese[5:])
     except:
         return( '查無此字' )
